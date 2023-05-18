@@ -1,9 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:softkodes/components/product_card.dart';
-import 'package:softkodes/components/search_bar.dart';
-import 'package:softkodes/models/product_list.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'product_area.dart';
+import 'search_bar.dart';
 
 class MobilePage extends StatelessWidget {
   const MobilePage({super.key});
@@ -13,7 +14,7 @@ class MobilePage extends StatelessWidget {
     return SafeArea(
       child: Container(
         width: double.infinity,
-        margin: EdgeInsets.only(top: 71),
+        margin: EdgeInsets.only(top: 71.h),
         color: Colors.white,
         child: Column(
           children: [
@@ -25,19 +26,19 @@ class MobilePage extends StatelessWidget {
                       child: Stack(
                         alignment: Alignment.center,
                         clipBehavior: Clip.none,
-                        children: const [
+                        children:  [
                           SizedBox(
                             child: Center(
                               child: Text(
                                 'My Products',
                                 style: TextStyle(
-                                  fontSize: 35,
+                                  fontSize: 35.sp,
                                   fontWeight: FontWeight.w700,
                                 ),
                               ),
                             ),
                           ),
-                          Positioned(top: -15, child: SearchBar())
+                          Positioned(top: -15.h, child: SearchBar())
                         ],
                       ),
                     )
@@ -45,32 +46,7 @@ class MobilePage extends StatelessWidget {
                 )),
             Expanded(
               flex: 2,
-              child: Container(
-                padding: EdgeInsets.only(top: 32, left: 32, right: 32),
-                width: double.infinity,
-                color: Color(0xffD9D9D9),
-                child: GridView.count(
-                  //padding: EdgeInsets.zero,
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  childAspectRatio: 0.76,
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 44,
-                  mainAxisSpacing: 37,
-                  children: [
-                    ...List.generate(
-                      productList.length,
-                      (index) {
-                        return ProductCard(
-                          image: productList[index]['image'],
-                          productTitle: productList[index]['productTitle'],
-                          price: productList[index]['price'],
-                        );
-                      },
-                    ),
-                  ],
-                ),
-              ),
+              child: ProductArea(),
             ),
           ],
         ),
@@ -78,3 +54,4 @@ class MobilePage extends StatelessWidget {
     );
   }
 }
+
