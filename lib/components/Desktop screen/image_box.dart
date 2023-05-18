@@ -8,11 +8,11 @@ class ImageBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 9.5),
+      margin: const EdgeInsets.symmetric(horizontal: 10),
       height: 65,
       width: 65,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: Image.asset(
         image,

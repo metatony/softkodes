@@ -1,13 +1,19 @@
 // ignore_for_file: prefer_const_constructors
 
-
-
 import 'package:flutter/material.dart';
 
-class DesktopSearchBar extends StatelessWidget {
-  const DesktopSearchBar({super.key});
-  
+import '../../models/product_list.dart';
 
+class DesktopSearchBar extends StatefulWidget {
+  const DesktopSearchBar({super.key});
+
+  @override
+  State<DesktopSearchBar> createState() => _DesktopSearchBarState();
+}
+
+String dropDownValue = 'category';
+
+class _DesktopSearchBarState extends State<DesktopSearchBar> {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -23,39 +29,58 @@ class DesktopSearchBar extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              width: 250,
-              child: TextField(
-                decoration: InputDecoration(
-                  enabledBorder: InputBorder.none,
-                  focusedBorder: InputBorder.none,
-                  prefixIcon: Icon(
-                    Icons.search,
-                    size: 22,
+        child: Padding(
+          padding: const EdgeInsets.only(right: 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: 330,
+                child: TextField(
+                  decoration: InputDecoration(
+                    
+                    enabledBorder: InputBorder.none,
+                    focusedBorder: InputBorder.none,
+                    prefixIcon: Icon(
+                      Icons.search,
+                      size: 24,
+                    ),
+                    hintText: 'Search for a product',
+                    hintStyle: TextStyle(color: Colors.black, fontSize: 15),
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 18, vertical: 25),
                   ),
-                  hintText: 'Search for a product',
-                  hintStyle: TextStyle(color: Colors.black, fontSize: 15),
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 18, vertical: 25),
                 ),
               ),
-            ),
-            VerticalDivider(
-              indent: 21,
-              endIndent: 22,
-              thickness: 1,
-              color: Colors.black,
-            ),
-            Text('category'),
-            Icon(
-              Icons.keyboard_arrow_down,
-              color: Color.fromARGB(255, 201, 201, 201),
-            ),
-            //.w)
-          ],
+              VerticalDivider(
+                indent: 21,
+                endIndent: 22,
+                thickness: 1,
+                color: Colors.black,
+              ),
+              SizedBox(width: 10),
+              Text('category'),
+              DropdownButton(
+                underline: Container(),
+                icon: Icon(
+                  Icons.keyboard_arrow_down,
+                  color: Color.fromARGB(255, 201, 201, 201),
+                ),
+                items: List.generate(dropDownList.length, (index) {
+                  return DropdownMenuItem(
+                    value: dropDownValue,
+                    child: Text(dropDownList[index]),
+                  );
+                }),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    dropDownValue = newValue!;
+                  });
+                },
+              ),
+              //.w)
+            ],
+          ),
         ),
       ),
     );

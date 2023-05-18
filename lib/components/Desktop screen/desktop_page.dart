@@ -31,6 +31,7 @@ class DesktopPage extends StatelessWidget {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
+                                SizedBox(height: 29,),
                                 Center(
                                   child: Text(
                                     'My Products',
