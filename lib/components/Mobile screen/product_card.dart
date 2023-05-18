@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:softkodes/widgets/add_button.dart';
+import 'package:softkodes/widgets/form_input.dart';
+
+import '../Form screen/form.dart';
 
 bool addToCart = false;
 
@@ -20,13 +23,11 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
-  
-
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: Duration(seconds: 0.40.toInt()),
-      height:  221.h,
+      height: 221.h,
       width: 170.w,
       decoration: BoxDecoration(
         color: Colors.white,
@@ -83,7 +84,18 @@ class _ProductCardState extends State<ProductCard> {
               ),
             ),
             SizedBox(height: 10.h),
-            addToCart ? AddButtton(function: (){}) : Container()
+            addToCart
+                ? AddButtton(function: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return FormPage();
+                        },
+                      ),
+                    );
+                  })
+                : Container()
           ],
         ),
       ),
