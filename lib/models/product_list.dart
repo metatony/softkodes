@@ -22,7 +22,9 @@ List<Map<String, dynamic>> productList = [
 ];
 
 List <String> dropDownList = [
+  
   'test 1',
   'test 2',
   'test 3',
+  'category'
 ];

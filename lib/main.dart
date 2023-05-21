@@ -2,8 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:softkodes/layout.dart';
 import 'components/Form screen/form.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'components/Mobile screen/mobile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
           //use 'FormPage' to view only the formpage
           //...'DesktopPage'
           //...'MobilePage'
-          body: FormPage(),
+          body: LayoutScreen(),
         ),
       ),
     );

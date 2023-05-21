@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:softkodes/models/product_list.dart';
@@ -11,10 +10,9 @@ class SearchBar extends StatefulWidget {
   @override
   State<SearchBar> createState() => _SearchBarState();
 }
- String dropDownValue = 'adidas';
  
-
 class _SearchBarState extends State<SearchBar> {
+  String dropDownValue = 'test 1';
   @override
 
   Widget build(BuildContext context) {
@@ -59,6 +57,7 @@ class _SearchBarState extends State<SearchBar> {
             ),
         
             DropdownButton(
+              value: dropDownValue,
               underline: Container(),
               icon: Icon(
                 Icons.keyboard_arrow_down,
@@ -67,13 +66,14 @@ class _SearchBarState extends State<SearchBar> {
               items: List.generate(dropDownList.length, (index) {
                 return DropdownMenuItem(
                   
-                  value: dropDownValue,
-                  child: Text(dropDownList[index]),
+                  value: dropDownList[index],
+                  child: Text(dropDownList[index],
+                  style: TextStyle(fontSize: 12),),
                 );
               }),
-              onChanged: (String? newValue) {
+              onChanged: (value) {
                 setState(() {
-                  dropDownValue = newValue!;
+                  dropDownValue = value!;
                 });
               },
             ),

@@ -11,9 +11,8 @@ class DesktopSearchBar extends StatefulWidget {
   State<DesktopSearchBar> createState() => _DesktopSearchBarState();
 }
 
-String dropDownValue = 'category';
-
 class _DesktopSearchBarState extends State<DesktopSearchBar> {
+  String dropDownValue = 'test 1';
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -38,7 +37,6 @@ class _DesktopSearchBarState extends State<DesktopSearchBar> {
                 width: 330,
                 child: TextField(
                   decoration: InputDecoration(
-                    
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
                     prefixIcon: Icon(
@@ -59,8 +57,9 @@ class _DesktopSearchBarState extends State<DesktopSearchBar> {
                 color: Colors.black,
               ),
               SizedBox(width: 10),
-              Text('category'),
+              //Text('category'),
               DropdownButton(
+                value: dropDownValue,
                 underline: Container(),
                 icon: Icon(
                   Icons.keyboard_arrow_down,
@@ -68,13 +67,13 @@ class _DesktopSearchBarState extends State<DesktopSearchBar> {
                 ),
                 items: List.generate(dropDownList.length, (index) {
                   return DropdownMenuItem(
-                    value: dropDownValue,
+                    value: dropDownList[index],
                     child: Text(dropDownList[index]),
                   );
                 }),
-                onChanged: (String? newValue) {
+                onChanged: (value) {
                   setState(() {
-                    dropDownValue = newValue!;
+                    dropDownValue = value!;
                   });
                 },
               ),
